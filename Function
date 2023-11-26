@@ -1,0 +1,34 @@
+#include <stdio.h>
+void callByValue(int x);
+void callByReference(int *y);
+int recursiveFunction(int n);
+
+int main() {
+    int a = 5;
+    int b = 10;
+    printf("Before callByValue: a = %d\n", a);
+    callByValue(a);
+    printf("After callByValue: a = %d\n\n", a);
+    printf("Before callByReference: b = %d\n", b);
+    callByReference(&b);
+    printf("After callByReference: b = %d\n\n", b);
+    int result = recursiveFunction(3);
+    printf("Recursive Function Result: %d\n", result);
+
+    return 0;
+}
+void callByValue(int x) {
+    x += 5;
+    printf("Inside callByValue: x = %d\n", x);
+}
+void callByReference(int *y) {
+    (*y) += 5;
+    printf("Inside callByReference: *y = %d\n", *y);
+}
+int recursiveFunction(int n) {
+    if (n == 0 || n == 1) {
+        return n;
+    } else {
+        return recursiveFunction(n - 1) + recursiveFunction(n - 2);
+    }
+}
